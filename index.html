@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eco CAR WASH | Waterless Car Cleaning Service</title>
+  <meta name="description" content="Eco CAR WASH — waterless car cleaning at your doorstep. Monthly subscriptions, eco-friendly products, experienced staff.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* -----------------------------
+       Reset & variables
+       -----------------------------*/
+    :root{
+      --primary:#2a9d8f;
+      --secondary:#264653;
+      --accent:#e9c46a;
+      --bg:#f8f9fa;
+      --card:#ffffff;
+      --muted:#6b6b6b;
+      --glass: rgba(255,255,255,0.6);
+      --maxw:1200px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background:var(--bg);
+      color:#222;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+    }
+    .container{width:92%;max-width:var(--maxw);margin:0 auto}
+
+    /* -----------------------------
+       Header
+       -----------------------------*/
+    header{background:#fff;position:sticky;top:0;z-index:80;box-shadow:0 6px 18px rgba(16,24,40,0.06)}
+    .header-row{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--primary);text-decoration:none}
+    .logo img{height:52px;display:block}
+    nav ul{display:flex;gap:22px;list-style:none;align-items:center}
+    nav a{color:var(--secondary);text-decoration:none;font-weight:600;padding:6px 8px;border-radius:6px}
+    nav a:hover,nav a.active{color:var(--primary)}
+    .cta-row{display:flex;gap:12px;align-items:center}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 18px;border-radius:999px;font-weight:700;text-decoration:none}
+    .btn-primary{background:var(--primary);color:#fff;box-shadow:0 8px 24px rgba(42,157,143,0.18)}
+    .btn-whatsapp{background:#25D366;color:#fff}
+    .mobile-toggle{display:none;font-size:22px;color:var(--secondary);cursor:pointer}
+
+    /* -----------------------------
+       Hero
+       -----------------------------*/
+    .hero{
+      background-image: linear-gradient(180deg, rgba(38,70,83,0.78), rgba(38,70,83,0.82)), url('https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+      background-size:cover;background-position:center;color:#fff;padding:96px 0 72px;text-align:center;position:relative;overflow:hidden
+    }
+    .hero .kicker{display:inline-block;background:rgba(255,255,255,0.06);padding:6px 12px;border-radius:999px;margin-bottom:18px;font-weight:600}
+    .hero h1{font-size:44px;line-height:1.05;margin-bottom:14px}
+    .hero p{font-size:18px;opacity:0.95;margin-bottom:22px}
+    .hero .hero-actions{display:flex;gap:12px;justify-content:center}
+
+    /* small cards under hero */
+    .quick-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:28px}
+    .qc{background:rgba(255,255,255,0.06);padding:16px;border-radius:10px;display:flex;align-items:center;gap:12px;justify-content:center}
+
+    /* -----------------------------
+       Sections
+       -----------------------------*/
+    section{padding:64px 0}
+    .section-title{text-align:center;margin-bottom:34px}
+    .section-title h2{font-size:28px;color:var(--secondary);position:relative;display:inline-block;padding-bottom:10px}
+    .section-title h2::after{content:'';display:block;height:4px;width:70px;background:var(--primary);margin:8px auto 0;border-radius:3px}
+
+    /* Features grid */
+    .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+    .feature{background:var(--card);padding:22px;border-radius:12px;box-shadow:0 8px 30px rgba(17,24,39,0.04);text-align:center;transition:transform .28s}
+    .feature:hover{transform:translateY(-8px)}
+    .feature .ic{width:64px;height:64px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:rgba(42,157,143,0.08);color:var(--primary);font-size:22px;margin-bottom:12px}
+    .feature h3{color:var(--secondary);margin-bottom:8px}
+
+    /* Services list */
+    .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+    .service-item{background:var(--card);padding:16px;border-radius:10px;display:flex;align-items:center;gap:12px;box-shadow:0 6px 20px rgba(17,24,39,0.04)}
+
+    /* Benefits */
+    .benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+    .benefit{background:linear-gradient(180deg,#fff,#f8fafb);padding:18px;border-radius:10px;box-shadow:0 10px 30px rgba(17,24,39,0.03);}
+
+    /* Pricing table */
+    .pricing-wrap{max-width:900px;margin:0 auto}
+    .pricing-table{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 18px 60px rgba(16,24,40,0.06)}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:18px 16px;text-align:center;border-bottom:1px solid #f1f1f1}
+    th{background:var(--primary);color:#fff;font-weight:700}
+    td strong{display:block}
+    .price{color:var(--primary);font-size:20px;font-weight:800}
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 420px;gap:28px}
+    .contact-info{display:flex;flex-direction:column;gap:16px}
+    .contact-card{display:flex;align-items:flex-start;gap:14px;background:var(--card);padding:14px;border-radius:10px}
+    .contact-card .icon{width:56px;height:56px;border-radius:10px;background:rgba(42,157,143,0.08);display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:20px}
+    form .form-row{display:flex;gap:12px}
+    input,textarea,select{width:100%;padding:12px;border-radius:8px;border:1px solid #e6e6e6;font-size:15px}
+    textarea{min-height:120px}
+    .form-submit{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;background:var(--secondary);color:#fff;border:none;cursor:pointer}
+
+    /* Footer */
+    footer{background:var(--secondary);color:#fff;padding:46px 0}
+    .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-bottom:18px}
+    .socials a{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:8px;background:rgba(255,255,255,0.06);color:#fff;margin-right:8px;text-decoration:none}
+
+    /* Utilities */
+    .small{font-size:13px;color:var(--muted)}
+
+    /* -----------------------------
+       Responsive
+       -----------------------------*/
+    @media (max-width:950px){
+      .contact-grid{grid-template-columns:1fr}
+      .hero h1{font-size:36px}
+      nav ul{display:none}
+      .mobile-toggle{display:block}
+    }
+    @media (max-width:540px){
+      .hero{padding:54px 0}
+      .hero h1{font-size:28px}
+    }
+
+    /* small animation */
+    .fade-up{transform:translateY(8px);opacity:0;transition:all .5s ease}
+    .fade-up.in{transform:none;opacity:1}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-row">
+      <!-- Logo image replaced with uploaded file -->
+      <a class="logo" href="#"><img src="carlogo.jpg" alt="Eco CAR WASH Logo"></a>
+
+      <nav>
+        <div class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></div>
+        <ul id="navList">
+          <li><a href="#" class="active">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="cta-row">
+        <!-- WhatsApp button opens chat with the specified number -->
+        <a class="btn btn-whatsapp" href="https://wa.me/919663717777" target="_blank"><i class="fab fa-whatsapp"></i> Book</a>
+        <a class="btn btn-primary" href="#pricing">View Plans</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="kicker">Premium • Eco • Doorstep</div>
+      <h1>Daily Shine. No Water.<br>Just Clean Cars.</h1>
+      <p>Monthly eco-friendly car cleaning at your doorstep. Waterless products, zero-scratch microfiber finish.</p>
+      <div class="hero-actions">
+        <a class="btn btn-whatsapp" href="https://wa.me/919663717777" target="_blank"><i class="fab fa-whatsapp"></i> Book via WhatsApp</a>
+        <a class="btn btn-primary" href="#pricing">See Plans</a>
+      </div>
+
+      <div class="quick-cards" style="margin-top:28px;">
+        <div class="qc">Save 150-200 L / wash</div>
+        <div class="qc">Verified professionals</div>
+        <div class="qc">Showroom shine</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section>
+    <div class="container">
+      <div class="section-title"><h2>Our Eco-Friendly Car Care</h2></div>
+      <div class="features-grid">
+        <div class="feature fade-up"><div class="ic"><i class="fas fa-spray-can"></i></div><h3>Exterior Cleaning</h3><p class="small">Complete exterior cleaning using waterless, organic products.</p></div>
+        <div class="feature fade-up"><div class="ic"><i class="fas fa-car-side"></i></div><h3>Interior Cleanup</h3><p class="small">Thorough vacuuming, dashboard polish and odor removal.</p></div>
+        <div class="feature fade-up"><div class="ic"><i class="fas fa-tint"></i></div><h3>Tyre & Bumper Polish</h3><p class="small">Long-lasting protectant for tyres and bumpers.</p></div>
+        <div class="feature fade-up"><div class="ic"><i class="fas fa-wind"></i></div><h3>Dashboard Dressing</h3><p class="small">Dust removal and UV-protective dressing for interiors.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="section-title"><h2>What's Included</h2></div>
+      <div class="services-grid">
+        <div class="service-item"><i class="fas fa-check-circle" style="color:var(--primary)"></i><div>Exterior Cleaning</div></div>
+        <div class="service-item"><i class="fas fa-check-circle" style="color:var(--primary)"></i><div>Interior Cleanup</div></div>
+        <div class="service-item"><i class="fas fa-check-circle" style="color:var(--primary)"></i><div>Tyre & Bumper Polish</div></div>
+        <div class="service-item"><i class="fas fa-check-circle" style="color:var(--primary)"></i><div>Dashboard Dressing</div></div>
+        <div class="service-item"><i class="fas fa-check-circle" style="color:var(--primary)"></i><div>Waterless, Organic Products</div></div>
+        <div class="service-item"><i class="fas fa-check-circle" style="color:var(--primary)"></i><div>Microfiber & Zero-Scratch Finish</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section>
+    <div class="container">
+      <div class="section-title"><h2>Why Choose ECO CAR WASH?</h2></div>
+      <div class="benefits-grid">
+        <div class="benefit fade-up"><h3>Eco-Friendly</h3><p class="small">Waterless cleaning that saves 150-200 liters per wash.</p></div>
+        <div class="benefit fade-up"><h3>Convenient</h3><p class="small">Daily service at your doorstep. Flexible subscription plans.</p></div>
+        <div class="benefit fade-up"><h3>Premium Quality</h3><p class="small">Showroom shine with every clean.</p></div>
+        <div class="benefit fade-up"><h3>Trusted Staff</h3><p class="small">Background-verified professionals.</p></div>
+      </div>
+      <div style="margin-top:18px;padding:16px;background:rgba(42,157,143,0.06);border-radius:8px;text-align:center"><strong>Save 150-200 Liters of Water Per Wash!</strong><div class="small">Join our eco-conscious commitment to preserving water resources.</div></div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="container">
+      <div class="section-title"><h2>Choose Your Plan</h2></div>
+      <div class="pricing-wrap">
+        <div class="pricing-table">
+          <table>
+            <thead>
+              <tr><th>Car Type</th><th>Daily</th><th>Alternate Day</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Hatchback</strong></td><td class="price">₹1399</td><td class="price">₹799</td></tr>
+              <tr><td><strong>Sedan</strong></td><td class="price">₹1499</td><td class="price">₹899</td></tr>
+              <tr><td><strong>SUV</strong></td><td class="price">₹1599</td><td class="price">₹999</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="text-align:center;margin-top:12px;color:var(--muted);font-style:italic">All prices inclusive. Monthly subscriptions only. No hidden charges. 100% doorstep service.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title"><h2>Contact & Book</h2></div>
+      <div class="contact-grid">
+        <div>
+          <div class="contact-info">
+            <div class="contact-card"><div class="icon"><i class="fas fa-phone"></i></div><div><strong>Call / WhatsApp</strong><div class="small">9663717777</div></div></div>
+            <div class="contact-card"><div class="icon"><i class="fas fa-map-marker-alt"></i></div><div><strong>Service Area</strong><div class="small">Jaynagar Bangalore</div></div></div>
+            <div class="contact-card"><div class="icon"><i class="fas fa-user-check"></i></div><div><strong>Trusted Staff</strong><div class="small">Background-verified professionals</div></div></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="contact-card" style="flex-direction:column;">
+            <form id="contactForm" style="width:100%">
+              <h3 style="margin-bottom:10px;color:var(--secondary)">Send a message / Book</h3>
+              <div class="form-row" style="margin-bottom:12px"><input type="text" name="name" placeholder="Your name" required></div>
+              <div class="form-row" style="margin-bottom:12px"><input type="tel" name="phone" placeholder="Phone (WhatsApp number)" required></div>
+              <div class="form-row" style="margin-bottom:12px"><select name="type"><option>Hatchback</option><option>Sedan</option><option>SUV</option></select></div>
+              <div style="margin-bottom:12px"><textarea name="msg" placeholder="Message / Address / Preferred time"></textarea></div>
+              <div style="display:flex;gap:8px;justify-content:flex-end"><button type="submit" class="form-submit">Send Message</button><a class="btn btn-whatsapp" href="https://wa.me/919663717777" target="_blank"><i class="fab fa-whatsapp"></i> Quick WhatsApp</a></div>
+              <div id="formMsg" class="small" style="margin-top:8px;color:var(--muted)"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>Eco CAR WASH</h4>
+          <div class="small">Waterless car cleaning at your doorstep. Sustainable, professional and convenient.</div>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <div class="small"><a href="#services" style="color:rgba(255,255,255,0.9);text-decoration:none">Services</a> • <a href="#pricing" style="color:rgba(255,255,255,0.9);text-decoration:none">Pricing</a></div>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <div class="small">9663717777</div>
+          <div style="margin-top:8px" class="socials"><a href="https://wa.me/919663717777"><i class="fab fa-whatsapp"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div>
+        </div>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:14px;text-align:center;color:rgba(255,255,255,0.8)">© <span id="year">2025</span> Eco CAR WASH. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navList = document.getElementById('navList');
+    mobileToggle && mobileToggle.addEventListener('click', ()=>{
+      navList.style.display = navList.style.display === 'flex' ? 'none' : 'flex';
+      navList.style.flexDirection = 'column';
+      navList.style.background = '#fff';
+      navList.style.position = 'absolute';
+      navList.style.top = '64px';
+      navList.style.right = '20px';
+      navList.style.padding = '14px';
+      navList.style.boxShadow = '0 10px 40px rgba(2,6,23,0.1)';
+    });
+
+    // Simple scroll reveal for elements with .fade-up
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting) e.target.classList.add('in');
+      })
+    },{threshold:0.12});
+    document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+
+    // contact form (no backend) — simulate success and create whatsapp message link
+    const form = document.getElementById('contactForm');
+    const formMsg = document.getElementById('formMsg');
+    form.addEventListener('submit', (ev)=>{
+      ev.preventDefault();
+      const data = new FormData(form);
+      const name = data.get('name');
+      const phone = data.get('phone');
+      const type = data.get('type');
+      const msg = data.get('msg');
+      // Create whatsapp prefilled message and open
+      const text = encodeURIComponent(`Hello Eco CAR WASH,\nName: ${name}\nPhone: ${phone}\nCar: ${type}\nMessage: ${msg}`);
+      const wa = `https://wa.me/919663717777?text=${text}`;
+      formMsg.textContent = 'Opening WhatsApp with your message...';
+      window.open(wa, '_blank');
+      setTimeout(()=>{ formMsg.textContent = 'Message opened in WhatsApp — if it did not open, please click Quick WhatsApp.' },1200);
+      form.reset();
+    });
+
+    // set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', function(e){
+        const href = this.getAttribute('href');
+        if(href === '#') return;
+        e.preventDefault();
+        const el = document.querySelector(href);
+        if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+      })
+    });
+  </script>
+</body>
+</html>
