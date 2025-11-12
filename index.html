@@ -855,6 +855,90 @@
             }
         }
 
+        /* Location Modal Styles */
+        .location-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .location-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: var(--medium-gray);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h3 {
+            color: var(--secondary);
+            font-size: 24px;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 24px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--secondary);
+        }
+
+        .location-details {
+            margin-bottom: 20px;
+        }
+
+        .location-details p {
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+
+        .location-map {
+            height: 300px;
+            background-color: var(--dark-gray);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-gray);
+        }
+
+        .location-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .location-actions .btn {
+            flex: 1;
+            text-align: center;
+        }
+
         /* Responsive Styles */
         @media (max-width: 992px) {
             .about-container {
@@ -929,6 +1013,10 @@
             .pricing-row.header {
                 display: none;
             }
+            
+            .location-actions {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -938,7 +1026,7 @@
         <div class="container header-container">
             <div class="logo">
                 <!-- ADD YOUR LOGO IMAGE LINK HERE -->
-                <img src="carlogo.png" alt="Eco Car Wash Logo" class="logo-img">
+                <img src="carlogo.jpg" alt="Eco Car Wash Logo" class="logo-img">
                 <div class="logo-text">Eco <span>Car Wash</span></div>
             </div>
             <nav>
@@ -1194,7 +1282,7 @@
                             <p>ecocarwash365@gmail.com</p>
                         </div>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-item" onclick="showLocation()">
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
                             <h3>Our Location</h3>
@@ -1271,7 +1359,7 @@
                 <div class="footer-col">
                     <h3>Contact Info</h3>
                     <ul>
-                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Jaynagar, Bangalore</a></li>
+                        <li><a href="#" onclick="showLocation()"><i class="fas fa-map-marker-alt"></i> Jaynagar, Bangalore</a></li>
                         <li><a href="tel:9663717777"><i class="fas fa-phone"></i> 9663717777</a></li>
                         <li><a href="mailto:ecocarwash365@gmail.com"><i class="fas fa-envelope"></i> ecocarwash365@gmail.com</a></li>
                     </ul>
@@ -1282,6 +1370,31 @@
             </div>
         </div>
     </footer>
+
+    <!-- Location Modal -->
+    <div class="location-modal" id="locationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Our Location</h3>
+                <button class="close-modal" onclick="closeLocation()">&times;</button>
+            </div>
+            <div class="location-details">
+                <p><strong>Eco Car Wash</strong></p>
+                <p>Shop No. 12, 4th Main Road</p>
+                <p>Jaynagar 4th Block</p>
+                <p>Bangalore, Karnataka 560041</p>
+                <p>India</p>
+            </div>
+            <div class="location-map">
+                <!-- In a real implementation, you would embed Google Maps here -->
+                <p>Map would be displayed here</p>
+            </div>
+            <div class="location-actions">
+                <a href="https://www.google.com/maps/search/?api=1&query=Eco+Car+Wash+Jaynagar+Bangalore" target="_blank" class="btn">Open in Google Maps</a>
+                <a href="https://maps.apple.com/?q=Eco+Car+Wash+Jaynagar+Bangalore" target="_blank" class="btn">Open in Apple Maps</a>
+            </div>
+        </div>
+    </div>
 
     <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/919663717777" target="_blank" class="whatsapp-float">
@@ -1345,10 +1458,22 @@
         function sendEmail() {
             window.location.href = 'mailto:ecocarwash365@gmail.com';
         }
+
+        // Location Modal Functions
+        function showLocation() {
+            document.getElementById('locationModal').classList.add('active');
+        }
+
+        function closeLocation() {
+            document.getElementById('locationModal').classList.remove('active');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('locationModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLocation();
+            }
+        });
     </script>
 </body>
 </html>
-
-
-
-
