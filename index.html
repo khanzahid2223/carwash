@@ -522,7 +522,7 @@
 
         .about-img {
             flex: 1;
-            height: 450px;
+            height: 380px;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             border-radius: 20px;
             display: flex;
@@ -708,6 +708,55 @@
         .form-group textarea {
             height: 140px;
             resize: vertical;
+        }
+
+        /* Service Providers Section */
+        .service-providers {
+            padding: 80px 0;
+            background-color: var(--dark-gray);
+        }
+
+        .providers-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .provider-card {
+            background-color: var(--medium-gray);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            padding: 20px;
+        }
+
+        .provider-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .provider-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 15px;
+            border: 3px solid var(--secondary);
+        }
+
+        .provider-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+
+        .provider-role {
+            font-size: 14px;
+            color: var(--text-gray);
         }
 
         /* Footer */
@@ -1017,6 +1066,11 @@
             .location-actions {
                 flex-direction: column;
             }
+            
+            .providers-container {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 20px;
+            }
         }
     </style>
 </head>
@@ -1218,8 +1272,7 @@
             </div>
             <div class="about-container">
                 <div class="about-img">
-                    <img src="washing.png" alt="Eco Car Wash" class="about-img">
-                    ECO CAR WASH
+                   <img src="washing.jpg" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="about-content">
                     <h2>Eco-Friendly Car Cleaning Solutions</h2>
@@ -1260,6 +1313,53 @@
         </div>
     </section>
 
+    <!-- Service Providers Section -->
+    <section class="service-providers">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Service Providers</h2>
+                <p>Meet our dedicated team of professional car care specialists</p>
+            </div>
+            <div class="providers-container">
+                <div class="provider-card">
+                    <img src="photo2.jpg" alt="Service Provider" class="provider-img">
+                    <div class="provider-name">Rajesh Kumar</div>
+                    <div class="provider-role">Senior Detailer</div>
+                </div>
+                <div class="provider-card">
+                    <img src="photo3.jpg" alt="Service Provider" class="provider-img">
+                    <div class="provider-name">Priya Sharma</div>
+                    <div class="provider-role">Interior Specialist</div>
+                </div>
+                <div class="provider-card">
+                    <img src="photo4.jpg" alt="Service Provider" class="provider-img">
+                    <div class="provider-name">Anil Patel</div>
+                    <div class="provider-role">Exterior Expert</div>
+                </div>
+                <div class="provider-card">
+                    <img src="photo5.jpg" alt="Service Provider" class="provider-img">
+                    <div class="provider-name">Sneha Reddy</div>
+                    <div class="provider-role">Quality Controller</div>
+                </div>
+                <div class="provider-card">
+                    <img src="photo6.jpg" alt="Service Provider" class="provider-img">
+                    <div class="provider-name">Vikram Singh</div>
+                    <div class="provider-role">Team Lead</div>
+                </div>
+                <div class="provider-card">
+                    <img src="photo7.jpg" alt="Service Provider" class="provider-img">
+                    <div class="provider-name">Meera Iyer</div>
+                    <div class="provider-role">Customer Relations</div>
+                </div>
+                <div class="provider-card">
+                    <img src="photo8.jpg" alt="Service Provider" class="provider-img">
+                    <div class="provider-name">Arun Joshi</div>
+                    <div class="provider-role">Operations Manager</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
@@ -1293,8 +1393,8 @@
                     <div class="contact-item">
                         <i class="fas fa-clock"></i>
                         <div>
-                            <h3>Working Hours</h3>
-                            <p>Monday - Sunday: 8:00 AM - 8:00 PM</p>
+                            <h3>Working Hours(24/7)</h3>
+                            <p>Monday - Sunday</p>
                         </div>
                     </div>
                 </div>
@@ -1478,6 +1578,3 @@
     </script>
 </body>
 </html>
-
-
-
