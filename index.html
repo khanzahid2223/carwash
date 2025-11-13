@@ -373,6 +373,14 @@
             transition: var(--transition);
             border: 1px solid rgba(255, 255, 255, 0.05);
             position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            animation-fill-mode: forwards;
+        }
+
+        .service-card.animate {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .service-card::before {
@@ -383,11 +391,18 @@
             width: 100%;
             height: 5px;
             background: linear-gradient(to right, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
         }
 
         .service-card:hover {
             transform: translateY(-15px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
         }
 
         .service-img {
@@ -400,6 +415,11 @@
             font-size: 60px;
             position: relative;
             overflow: hidden;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-img {
+            transform: scale(1.05);
         }
 
         .service-img::after {
@@ -414,17 +434,44 @@
 
         .service-content {
             padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .service-card:hover .service-content::before {
+            left: 100%;
         }
 
         .service-content h3 {
             font-size: 24px;
             margin-bottom: 15px;
             color: var(--secondary);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-content h3 {
+            transform: translateX(10px);
         }
 
         .service-content p {
             color: var(--text-gray);
             margin-bottom: 20px;
+            transition: transform 0.3s ease 0.1s;
+        }
+
+        .service-card:hover .service-content p {
+            transform: translateX(10px);
         }
 
         .price {
@@ -434,11 +481,44 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            transition: transform 0.3s ease 0.2s;
+        }
+
+        .service-card:hover .price {
+            transform: translateX(10px);
         }
 
         .price::before {
             content: '₹';
             font-size: 20px;
+        }
+
+        /* Animation for service cards */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-card {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .service-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .service-card:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .service-card:nth-child(3) {
+            animation-delay: 0.5s;
         }
 
         /* Commitment Section */
@@ -1035,11 +1115,13 @@
             z-index: 1000;
             transition: var(--transition);
             animation: pulse 2s infinite;
+            text-decoration: none;
         }
 
         .whatsapp-float:hover {
             transform: scale(1.1);
             box-shadow: 0 6px 25px rgba(37, 211, 102, 0.7);
+            text-decoration: none;
         }
 
         /* Floating Call Button */
@@ -1060,11 +1142,13 @@
             z-index: 1000;
             transition: var(--transition);
             animation: pulse-call 2s infinite;
+            text-decoration: none;
         }
 
         .call-float:hover {
             transform: scale(1.1);
             box-shadow: 0 6px 25px rgba(10, 111, 126, 0.7);
+            text-decoration: none;
         }
 
         @keyframes pulse {
@@ -1390,7 +1474,7 @@
                 </div>
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="fullservice.jpg".jpg" alt="Premium Detailing" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="fullservice.jpg" alt="Premium Detailing" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div class="service-content">
                         <h3>Full Service Wash</h3>
@@ -1851,7 +1935,7 @@
 
                 <div class="terms-section">
                     <h3>19. Contact Us</h3>
-                    <p>If you have any questions about these terms please contact support@ ecocarwash365@gmail.com.</p>
+                    <p>If you have any questions about these terms please contact support@ <a href="ecocarwash365@gmail.com">ecocarwash365@gmail.com</a></p>
                 </div>
             </div>
         </div>
@@ -2050,6 +2134,37 @@
             if (e.target === this) {
                 closeLocation();
             }
+        });
+
+        // Service cards animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceCards = document.querySelectorAll('.service-card');
+            
+            // Function to check if element is in viewport
+            function isInViewport(element) {
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+            
+            // Function to handle scroll animation
+            function handleScrollAnimation() {
+                serviceCards.forEach(card => {
+                    if (isInViewport(card)) {
+                        card.classList.add('animate');
+                    }
+                });
+            }
+            
+            // Initial check
+            handleScrollAnimation();
+            
+            // Check on scroll
+            window.addEventListener('scroll', handleScrollAnimation);
         });
     </script>
 </body>
