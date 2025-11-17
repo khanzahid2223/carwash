@@ -986,6 +986,51 @@
             font-weight: 600;
         }
 
+        /* Feedback Section */
+        .feedback {
+            padding: 100px 0;
+            background-color: var(--black);
+            width: 100%;
+        }
+
+        .feedback-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 50px;
+        }
+
+        .feedback-form {
+            background: var(--medium-gray);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .rating {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+        }
+
+        .rating input {
+            display: none;
+        }
+
+        .rating label {
+            font-size: 30px;
+            color: var(--text-gray);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .rating input:checked ~ label,
+        .rating label:hover,
+        .rating label:hover ~ label {
+            color: var(--secondary);
+        }
+
         /* Footer */
         footer {
             background: linear-gradient(135deg, var(--primary-dark) 0%, #083c1e 100%);
@@ -1430,6 +1475,7 @@
                     <li><a href="#pricing">Pricing</a></li>
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li><a href="#feedback">Feedback</a></li>
                     <li><a href="#terms">Terms & Conditions</a></li>
                 </ul>
             </nav>
@@ -1791,6 +1837,73 @@
         </div>
     </section>
 
+    <!-- Feedback Section -->
+    <section class="feedback" id="feedback">
+        <div class="container">
+            <div class="section-title">
+                <h2>Customer Feedback</h2>
+                <p>We value your opinion. Share your experience with us</p>
+            </div>
+            <div class="feedback-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-star"></i>
+                        <div>
+                            <h3>Share Your Experience</h3>
+                            <p>Your feedback helps us improve our services</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-comments"></i>
+                        <div>
+                            <h3>Quick Response</h3>
+                            <p>We respond to all feedback within 24 hours</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-thumbs-up"></i>
+                        <div>
+                            <h3>Continuous Improvement</h3>
+                            <p>Your suggestions help us serve you better</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="feedback-form">
+                    <form id="feedbackForm">
+                        <div class="form-group">
+                            <label for="feedbackName">Your Name</label>
+                            <input type="text" id="feedbackName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="feedbackPhone">Phone Number</label>
+                            <input type="tel" id="feedbackPhone" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Rate Your Experience</label>
+                            <div class="rating">
+                                <input type="radio" id="star5" name="rating" value="5">
+                                <label for="star5">★</label>
+                                <input type="radio" id="star4" name="rating" value="4">
+                                <label for="star4">★</label>
+                                <input type="radio" id="star3" name="rating" value="3">
+                                <label for="star3">★</label>
+                                <input type="radio" id="star2" name="rating" value="2">
+                                <label for="star2">★</label>
+                                <input type="radio" id="star1" name="rating" value="1">
+                                <label for="star1">★</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="feedbackMessage">Your Feedback</label>
+                            <textarea id="feedbackMessage" placeholder="Tell us about your experience with our service..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Submit Feedback</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Terms Section -->
     <section class="terms" id="terms">
         <div class="container">
@@ -1970,6 +2083,7 @@
                         <li><a href="#pricing"><i class="fas fa-chevron-right"></i> Pricing</a></li>
                         <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
                         <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                        <li><a href="#feedback"><i class="fas fa-chevron-right"></i> Feedback</a></li>
                         <li><a href="#terms"><i class="fas fa-chevron-right"></i> Terms & Conditions</a></li>
                     </ul>
                 </div>
@@ -2071,6 +2185,34 @@
             this.reset();
         });
 
+        // Feedback form submission
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('feedbackName').value;
+            const phone = document.getElementById('feedbackPhone').value;
+            const rating = document.querySelector('input[name="rating"]:checked') ? document.querySelector('input[name="rating"]:checked').value : 'Not rated';
+            const message = document.getElementById('feedbackMessage').value;
+            
+            // Create WhatsApp message
+            const whatsappMessage = `*New Feedback from Eco Car Wash Website*%0A%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Rating:* ${rating} stars%0A*Feedback:* ${message}`;
+            
+            // Open WhatsApp with pre-filled message
+            window.open(`https://wa.me/919663717777?text=${whatsappMessage}`, '_blank');
+            
+            // Show confirmation message
+            alert('Thank you for your feedback! You will be redirected to WhatsApp to send your feedback.');
+            
+            // Reset form
+            this.reset();
+            
+            // Reset rating
+            document.querySelectorAll('input[name="rating"]').forEach(radio => {
+                radio.checked = false;
+            });
+        });
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -2166,14 +2308,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
