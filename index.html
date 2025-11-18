@@ -1111,8 +1111,8 @@
             text-decoration: none;
         }
 
-        /* Floating Call Button - REMOVED */
-        /* .call-float {
+        /* Floating Call Button */
+        .call-float {
             position: fixed;
             bottom: 100px;
             right: 25px;
@@ -1136,7 +1136,7 @@
             transform: scale(1.1);
             box-shadow: 0 6px 25px rgba(10, 111, 126, 0.7);
             text-decoration: none;
-        } */
+        }
 
         @keyframes pulse {
             0% {
@@ -1150,7 +1150,7 @@
             }
         }
 
-        /* @keyframes pulse-call {
+        @keyframes pulse-call {
             0% {
                 box-shadow: 0 0 0 0 rgba(10, 111, 126, 0.7);
             }
@@ -1160,7 +1160,7 @@
             100% {
                 box-shadow: 0 0 0 0 rgba(10, 111, 126, 0);
             }
-        } */
+        }
 
         /* Location Modal Styles */
         .location-modal {
@@ -1407,10 +1407,15 @@
                 padding: 12px 25px;
             }
             
-            .whatsapp-float {
+            .call-float, .whatsapp-float {
                 width: 55px;
                 height: 55px;
                 font-size: 24px;
+            }
+            
+            .call-float {
+                bottom: 90px;
+                right: 10px;
             }
             
             .whatsapp-float {
@@ -2079,10 +2084,10 @@
         </div>
     </div>
 
-    <!-- Floating Call Button - REMOVED -->
-    <!-- <a href="tel:9663717777" class="call-float" aria-label="Call Us">
+    <!-- Floating Call Button -->
+    <a href="tel:9663717777" class="call-float" aria-label="Call Us">
         <i class="fas fa-phone"></i>
-    </a> -->
+    </a>
 
     <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/919663717777?text=Hello%20 %2C%20I%E2%80%99m%20interested%20in%20booking%20an%20Eco%20Car%20Wash%20service.%0APlease%20share%20the%20details%20and%20available%20slots." target="_blank" class="whatsapp-float" aria-label="WhatsApp">
@@ -2317,3 +2322,4 @@
     </script>
 </body>
 </html>
+
