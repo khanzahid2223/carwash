@@ -2,29 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0a6f7e">
+    <meta name="description" content="Eco Car Wash - Professional car cleaning services using eco-friendly products and advanced techniques. Book now for doorstep service in Bangalore.">
+    <meta property="og:title" content="Eco Car Wash - Professional Car Cleaning Services">
+    <meta property="og:description" content="Experience complete interior and exterior cleaning with eco-friendly products. Doorstep service available in Bangalore.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1507136566006-cfc505b114fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:url" content="https://www.ecocarwash.in">
+    <meta name="twitter:card" content="summary_large_image">
     <title>Eco Car Wash - Professional Car Cleaning Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Reset and base styles for full-screen compatibility */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        html, body {
-            width: 100%;
-            height: 100%;
-            overflow-x: hidden;
-            -webkit-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
-            text-size-adjust: 100%;
-            scroll-behavior: smooth;
-        }
-
+        /* CSS Variables for consistent theming */
         :root {
             --primary: #0a6f7e;
             --primary-dark: #0a565e;
@@ -40,14 +32,30 @@
             --white: #ffffff;
             --shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             --transition: all 0.3s ease;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
         }
 
         body {
-            background: var(--black);
+            font-family: 'Inter', sans-serif;
+            background-color: var(--black);
             color: var(--text-light);
             line-height: 1.6;
+            overflow-x: hidden;
             min-height: 100vh;
-            font-size: 16px;
         }
 
         .container {
@@ -57,28 +65,35 @@
             padding: 0 20px;
         }
 
-        /* Ensure all sections take full width */
         section {
             width: 100%;
+            padding: 100px 0;
         }
 
-        /* Header Styles */
+        /* Modern Sticky Navbar */
         header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: var(--white);
-            padding: 15px 0;
-            box-shadow: var(--shadow);
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
             z-index: 1000;
             transition: var(--transition);
-            width: 100%;
+            background: rgba(10, 111, 126, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        header.scrolled {
+            background: rgba(10, 111, 126, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
 
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 15px 0;
         }
 
         .logo {
@@ -88,19 +103,15 @@
         }
 
         .logo-img {
-            width: 200px;
-            height: 110px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            color: var(--primary);
-            font-size: 14px;
-            text-align: center;
-            padding: 5px;
-            transition: var(--transition);
-            overflow: hidden;
-          
+            background: var(--white);
+            box-shadow: var(--shadow);
         }
 
         .logo-img img {
@@ -109,12 +120,10 @@
             object-fit: cover;
         }
 
-     
-
         .logo-text {
-            font-size: 30px;
+            font-size: 24px;
             font-weight: 800;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            color: var(--white);
         }
 
         .logo-text span {
@@ -130,9 +139,9 @@
         nav a {
             color: var(--white);
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             transition: var(--transition);
-            font-size: 17px;
+            font-size: 16px;
             position: relative;
             padding: 5px 0;
         }
@@ -163,81 +172,53 @@
             color: var(--white);
         }
 
-        /* Mobile Navigation Dots */
-        .mobile-dots {
+        /* Back to Top Button */
+        .back-to-top {
             position: fixed;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
-            z-index: 1001;
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .dots-container {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            cursor: pointer;
-            padding: 10px;
-            background: rgba(10, 111, 126, 0.8);
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-        }
-
-        .dot {
-            width: 6px;
-            height: 6px;
-            background-color: var(--white);
-            border-radius: 50%;
-        }
-
-        .mobile-nav-menu {
-            position: absolute;
-            top: 50px;
-            right: 0;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            padding: 15px 0;
-            min-width: 180px;
-            display: none;
-            flex-direction: column;
-            z-index: 1002;
-        }
-
-        .mobile-nav-menu.active {
-            display: flex;
-        }
-
-        .mobile-nav-menu a {
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
             color: var(--white);
-            text-decoration: none;
-            padding: 12px 20px;
-            transition: var(--transition);
-            font-weight: 600;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: var(--shadow);
+            z-index: 999;
             cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
         }
 
-        .mobile-nav-menu a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--secondary);
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
         }
 
-        /* Hero Section */
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+
+        /* Modern Hero Section with Glassmorphism */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1507136566006-cfc505b114fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             color: var(--white);
-            padding: 150px 0;
+            padding: 200px 0 150px;
             text-align: center;
             position: relative;
             overflow: hidden;
             width: 100%;
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
         }
 
         .hero::before {
@@ -252,33 +233,52 @@
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
         }
 
-        .hero h1 {
-            font-size: 52px;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-            line-height: 1.2;
+        .hero-logo {
+            width: 200px;
+            margin: 0 auto 30px;
+            animation: float 6s ease-in-out infinite;
         }
 
-      
+        .hero-logo img {
+            width: 100%;
+            height: auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            line-height: 1.2;
+            font-weight: 800;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
 
         .hero-tagline {
-            font-size: 28px;
+            font-size: 1.8rem;
             margin-bottom: 25px;
             font-weight: 600;
             color: var(--secondary);
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease 0.3s forwards;
         }
 
         .hero p {
-            font-size: 22px;
+            font-size: 1.2rem;
             margin-bottom: 40px;
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease 0.6s forwards;
         }
 
         .btn {
@@ -296,6 +296,9 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             position: relative;
             overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease 0.9s forwards;
         }
 
         .btn::before {
@@ -318,20 +321,14 @@
             left: 100%;
         }
 
-        /* Services Section */
-        .services {
-            padding: 100px 0;
-            background-color: var(--dark-gray);
-            width: 100%;
-        }
-
+        /* Section Title Styling */
         .section-title {
             text-align: center;
             margin-bottom: 60px;
         }
 
         .section-title h2 {
-            font-size: 42px;
+            font-size: 2.5rem;
             color: var(--secondary);
             margin-bottom: 15px;
             position: relative;
@@ -354,7 +351,12 @@
             color: var(--text-gray);
             max-width: 700px;
             margin: 20px auto 0;
-            font-size: 18px;
+            font-size: 1.1rem;
+        }
+
+        /* Modern Services Section with Glassmorphism */
+        .services {
+            background-color: var(--dark-gray);
         }
 
         .services-grid {
@@ -364,16 +366,17 @@
         }
 
         .service-card {
-            background-color: var(--medium-gray);
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: var(--shadow);
+            box-shadow: var(--glass-shadow);
             transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
             position: relative;
             opacity: 0;
             transform: translateY(30px);
-            animation-fill-mode: forwards;
         }
 
         .service-card.animate {
@@ -420,35 +423,16 @@
             transform: scale(1.05);
         }
 
-        .service-img::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+        .service-img img {
             width: 100%;
             height: 100%;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            object-fit: cover;
         }
 
         .service-content {
             padding: 30px;
             position: relative;
             overflow: hidden;
-        }
-
-        .service-content::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-            transition: left 0.7s ease;
-        }
-
-        .service-card:hover .service-content::before {
-            left: 100%;
         }
 
         .service-content h3 {
@@ -472,58 +456,9 @@
             transform: translateX(10px);
         }
 
-        .price {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--secondary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: transform 0.3s ease 0.2s;
-        }
-
-        .service-card:hover .price {
-            transform: translateX(10px);
-        }
-
-        .price::before {
-            content: '₹';
-            font-size: 20px;
-        }
-
-        /* Animation for service cards */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .service-card {
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        .service-card:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .service-card:nth-child(2) {
-            animation-delay: 0.3s;
-        }
-
-        .service-card:nth-child(3) {
-            animation-delay: 0.5s;
-        }
-
         /* Commitment Section */
         .commitment {
-            padding: 100px 0;
             background-color: var(--black);
-            width: 100%;
         }
 
         .commitment-container {
@@ -533,12 +468,15 @@
         }
 
         .commitment-card {
-            background-color: var(--medium-gray);
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             padding: 40px 30px;
             border-radius: 15px;
-            box-shadow: var(--shadow);
+            box-shadow: var(--glass-shadow);
             text-align: center;
             transition: var(--transition);
+            border: 1px solid var(--glass-border);
         }
 
         .commitment-card:hover {
@@ -563,9 +501,7 @@
 
         /* Services List Section */
         .services-list {
-            padding: 100px 0;
             background-color: var(--dark-gray);
-            width: 100%;
         }
 
         .services-list-container {
@@ -575,10 +511,13 @@
         }
 
         .service-category {
-            background-color: var(--medium-gray);
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             padding: 30px;
             border-radius: 15px;
-            box-shadow: var(--shadow);
+            box-shadow: var(--glass-shadow);
+            border: 1px solid var(--glass-border);
         }
 
         .service-category h3 {
@@ -611,18 +550,19 @@
 
         /* Pricing Section */
         .pricing {
-            padding: 100px 0;
             background-color: var(--black);
-            width: 100%;
         }
 
         .pricing-table {
-            background-color: var(--medium-gray);
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: var(--shadow);
+            box-shadow: var(--glass-shadow);
             max-width: 800px;
             margin: 0 auto;
+            border: 1px solid var(--glass-border);
         }
 
         .pricing-header {
@@ -667,11 +607,9 @@
 
         /* About Section */
         .about {
-            padding: 100px 0;
             background-color: var(--dark-gray);
             position: relative;
             overflow: hidden;
-            width: 100%;
         }
 
         .about::before {
@@ -715,22 +653,12 @@
             object-fit: cover;
         }
 
-        .about-img::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
-        }
-
         .about-content {
             flex: 1;
         }
 
         .about-content h2 {
-            font-size: 42px;
+            font-size: 2.5rem;
             color: var(--secondary);
             margin-bottom: 25px;
             line-height: 1.2;
@@ -739,7 +667,7 @@
         .about-content p {
             margin-bottom: 25px;
             color: var(--text-light);
-            font-size: 17px;
+            font-size: 1.1rem;
         }
 
         .features {
@@ -754,10 +682,13 @@
             align-items: center;
             gap: 15px;
             padding: 15px;
-            background-color: var(--medium-gray);
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: var(--glass-shadow);
             transition: var(--transition);
+            border: 1px solid var(--glass-border);
         }
 
         .feature:hover {
@@ -789,11 +720,60 @@
             font-size: 15px;
         }
 
+        /* Service Providers Section */
+        .service-providers {
+            background-color: var(--dark-gray);
+        }
+
+        .providers-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .provider-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--glass-shadow);
+            transition: var(--transition);
+            text-align: center;
+            padding: 20px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .provider-card:hover {
+            transform: translateY(10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .provider-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 15px;
+            border: 3px solid var(--secondary);
+        }
+
+        .provider-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+
+        .provider-role {
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
         /* Contact Section */
         .contact {
-            padding: 100px 0;
             background-color: var(--black);
-            width: 100%;
         }
 
         .contact-container {
@@ -813,15 +793,18 @@
             align-items: center;
             gap: 20px;
             padding: 20px;
-            background-color: var(--medium-gray);
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-radius: 15px;
             transition: var(--transition);
             cursor: pointer;
+            border: 1px solid var(--glass-border);
         }
 
         .contact-item:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow);
+            box-shadow: var(--glass-shadow);
         }
 
         .contact-item i {
@@ -849,10 +832,13 @@
         }
 
         .contact-form {
-            background: var(--medium-gray);
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             padding: 40px;
             border-radius: 20px;
-            box-shadow: var(--shadow);
+            box-shadow: var(--glass-shadow);
+            border: 1px solid var(--glass-border);
         }
 
         .form-group {
@@ -890,68 +876,65 @@
             resize: vertical;
         }
 
-        /* Service Providers Section */
-        .service-providers {
-            padding: 80px 0;
-            background-color: var(--dark-gray);
-            width: 100%;
+        /* Feedback Section */
+        .feedback {
+            background-color: var(--black);
         }
 
-        .providers-container {
+        .feedback-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 50px;
         }
 
-        .provider-card {
-            background-color: var(--medium-gray);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            text-align: center;
-            padding: 20px;
+        .feedback-form {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--glass-shadow);
+            border: 1px solid var(--glass-border);
         }
 
-        .provider-card:hover {
-            transform: translateY(10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        .rating {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
         }
 
-        .provider-img {
-            width: 100px;
-            height: 120px;
-            border-radius: 60%;
-            object-fit: calc();
-            margin: 0 auto 15px;
-            border: 3px solid var(--secondary);
+        .rating input {
+            display: none;
         }
 
-        .provider-name {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--secondary);
-            margin-bottom: 5px;
-        }
-
-        .provider-role {
-            font-size: 14px;
+        .rating label {
+            font-size: 30px;
             color: var(--text-gray);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .rating input:checked ~ label,
+        .rating label:hover,
+        .rating label:hover ~ label {
+            color: var(--secondary);
         }
 
         /* Terms Section */
         .terms {
-            padding: 100px 0;
             background-color: var(--dark-gray);
-            width: 100%;
         }
 
         .terms-content {
-            background-color: var(--medium-gray);
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             padding: 50px;
             border-radius: 15px;
-            box-shadow: var(--shadow);
+            box-shadow: var(--glass-shadow);
+            border: 1px solid var(--glass-border);
         }
 
         .terms-section {
@@ -986,51 +969,6 @@
             font-weight: 600;
         }
 
-        /* Feedback Section */
-        .feedback {
-            padding: 100px 0;
-            background-color: var(--black);
-            width: 100%;
-        }
-
-        .feedback-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 50px;
-        }
-
-        .feedback-form {
-            background: var(--medium-gray);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-        }
-
-        .rating {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-direction: row-reverse;
-            justify-content: flex-end;
-        }
-
-        .rating input {
-            display: none;
-        }
-
-        .rating label {
-            font-size: 30px;
-            color: var(--text-gray);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .rating input:checked ~ label,
-        .rating label:hover,
-        .rating label:hover ~ label {
-            color: var(--secondary);
-        }
-
         /* Footer */
         footer {
             background: linear-gradient(135deg, var(--primary-dark) 0%, #083c1e 100%);
@@ -1038,7 +976,6 @@
             padding: 80px 0 20px;
             position: relative;
             overflow: hidden;
-            width: 100%;
         }
 
         footer::before {
@@ -1237,13 +1174,16 @@
         }
 
         .modal-content {
-            background-color: var(--medium-gray);
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-radius: 15px;
             padding: 30px;
             max-width: 600px;
             width: 90%;
-            box-shadow: var(--shadow);
+            box-shadow: var(--glass-shadow);
             position: relative;
+            border: 1px solid var(--glass-border);
         }
 
         .modal-header {
@@ -1302,6 +1242,30 @@
             text-align: center;
         }
 
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
         /* Responsive Styles */
         @media (max-width: 992px) {
             .about-container {
@@ -1313,7 +1277,7 @@
             }
             
             .hero h1 {
-                font-size: 42px;
+                font-size: 2.8rem;
             }
             
             .features {
@@ -1328,7 +1292,9 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+                background: rgba(10, 111, 126, 0.95);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
                 flex-direction: column;
                 padding: 20px;
                 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -1343,28 +1309,24 @@
                 display: block;
             }
             
-            .mobile-dots {
-                display: flex;
-            }
-            
             .hero {
-                padding: 120px 0;
+                padding: 150px 0 100px;
             }
             
             .hero h1 {
-                font-size: 36px;
+                font-size: 2.2rem;
             }
             
             .hero-tagline {
-                font-size: 22px;
+                font-size: 1.4rem;
             }
             
             .hero p {
-                font-size: 18px;
+                font-size: 1rem;
             }
             
             .section-title h2 {
-                font-size: 36px;
+                font-size: 2rem;
             }
             
             .contact-form {
@@ -1395,31 +1357,30 @@
             }
         }
 
-        /* Added to fix GitHub Pages display issues */
         @media (max-width: 480px) {
             .hero h1 {
-                font-size: 32px;
+                font-size: 1.8rem;
             }
             
             .hero-tagline {
-                font-size: 20px;
+                font-size: 1.2rem;
             }
             
             .hero p {
-                font-size: 16px;
+                font-size: 0.9rem;
             }
             
             .section-title h2 {
-                font-size: 28px;
+                font-size: 1.8rem;
             }
             
             .logo-text {
-                font-size: 24px;
+                font-size: 20px;
             }
             
             .logo-img {
-                width: 80px;
-                height: 80px;
+                width: 50px;
+                height: 50px;
             }
             
             .service-content h3 {
@@ -1427,16 +1388,12 @@
             }
             
             .about-content h2 {
-                font-size: 32px;
+                font-size: 1.8rem;
             }
             
             .btn {
                 font-size: 16px;
                 padding: 12px 25px;
-            }
-            
-            .mobile-dots {
-                right: 10px;
             }
             
             .call-float, .whatsapp-float {
@@ -1459,10 +1416,9 @@
 </head>
 <body>
     <!-- Header -->
-    <header>
+    <header id="header">
         <div class="container header-container">
             <div class="logo">
-                <!-- ADD YOUR LOGO IMAGE LINK HERE -->
                 <div class="logo-img">
                     <img src="zahid.png" alt="Eco Car Wash Logo" width="40">
                 </div>
@@ -1476,7 +1432,7 @@
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="#feedback">Feedback</a></li>
-                    <li><a href="#terms">Terms & Conditions</a></li>
+                    <li><a href="#terms">Terms</a></li>
                 </ul>
             </nav>
             <div class="mobile-menu" id="mobileMenu">
@@ -1485,14 +1441,21 @@
         </div>
     </header>
 
-  
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <img src="zahid.png" alt="" width="700" height="500" >
+                <div class="hero-logo">
+                    <img src="zahid.png" alt="Eco Car Wash">
+                </div>
+                <h1>Eco Car Wash</h1>
                 <div class="hero-tagline">Your Car Deserves A Sparkle. Nature Deserves Care.</div>
-                <p>Experience complete interior and exterior cleaning,leaving every corner spotless and shining.Enjoy a fresh,hygienic and eco-friendly clean that makes your car look it's best.</p>
+                <p>Experience complete interior and exterior cleaning, leaving every corner spotless and shining. Enjoy a fresh, hygienic and eco-friendly clean that makes your car look its best.</p>
                 <a href="#contact" class="btn">Book Now</a>
             </div>
         </div>
@@ -1508,33 +1471,29 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="exterior.jpg" alt="Premium Detailing" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="exterior.jpg" alt="Exterior Cleaning" loading="lazy">
                     </div>
                     <div class="service-content">
                         <h3>Exterior Cleaning</h3>
-                        <p>Bring back your car’s shine with our thorough exterior cleaning. We remove dirt, dust, and grime while protecting your vehicle’s paint with eco-friendly care.</p>
-                        
+                        <p>Bring back your car's shine with our thorough exterior cleaning. We remove dirt, dust, and grime while protecting your vehicle's paint with eco-friendly care.</p>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="tyre.jpg" alt="Premium Detailing" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="tyre.jpg" alt="Tyre and Bumper Polish" loading="lazy">
                     </div>
                     <div class="service-content">
                         <h3>Tyre and Bumper Polish</h3>
                         <p>Give your tyres and bumpers a lasting sparkle. Eco-friendly products ensure shine without harming nature.</p>
-
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="service-img">
-                        <!-- Replaced the icon with the premium image -->
-                        <img src="interior.jpg" alt="Premium Detailing" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="interior.jpg" alt="Interior Detailing" loading="lazy">
                     </div>
                     <div class="service-content">
                         <h3>Interior Detailing</h3>
-                        <p>Keep your car’s interior fresh and spotless with our thorough cleaning. We remove dust, stains, and odors using eco-friendly products for a healthy ride.</p>
-
+                        <p>Keep your car's interior fresh and spotless with our thorough cleaning. We remove dust, stains, and odors using eco-friendly products for a healthy ride.</p>
                     </div>
                 </div>
             </div>
@@ -1661,7 +1620,7 @@
             </div>
             <div class="about-container">
                 <div class="about-img">
-                    <img src="hand1.jpg" alt="Car Washing">
+                    <img src="hand1.jpg" alt="Car Washing" loading="lazy">
                 </div>
                 <div class="about-content">
                     <h2>Eco-Friendly Car Cleaning Solutions</h2>
@@ -1711,64 +1670,52 @@
             </div>
             <div class="providers-container">
                 <div class="provider-card">
-                    <img src="sobha.jpg" alt="Service Provider" class="provider-img">
-                    <div class="provider-name">Rajesh Kumar</div>
-                    <div class="provider-role">Senior Detailer</div>
+                    <img src="sobha.jpg" alt="Service Provider" class="provider-img" loading="lazy">
+                   
                 </div>
                 <div class="provider-card">
-                    <img src="sriram.jpg" alt="Service Provider" class="provider-img">
-                    <div class="provider-name">Priya Sharma</div>
-                    <div class="provider-role">Interior Specialist</div>
+                    <img src="sriram.jpg" alt="Service Provider" class="provider-img" loading="lazy">
+                 
                 </div>
                 <div class="provider-card">
-                    <img src="mantri.jpg" alt="Service Provider" class="provider-img">
-                    <div class="provider-name">Anil Patel</div>
-                    <div class="provider-role">Exterior Expert</div>
+                    <img src="mantri.jpg" alt="Service Provider" class="provider-img" loading="lazy">
+                 
                 </div>
                 <div class="provider-card">
-                    <img src="sattva.jpg" alt="Service Provider" class="provider-img">
-                    <div class="provider-name">Sneha Reddy</div>
-                    <div class="provider-role">Quality Controller</div>
+                    <img src="sattva.jpg" alt="Service Provider" class="provider-img" loading="lazy">
+                  
                 </div>
-                <div class="provider-card">
+                 <div class="provider-card">
                     <img src="provident.jpg" alt="Service Provider" class="provider-img">
-                    <div class="provider-name">Vikram Singh</div>
-                    <div class="provider-role">Team Lead</div>
+                    
                 </div>
                 <div class="provider-card">
                     <img src="prestige.jpg" alt="Service Provider" class="provider-img">
-                    <div class="provider-name">Meera Iyer</div>
-                    <div class="provider-role">Customer Relations</div>
+                   
                 </div>
                 <div class="provider-card">
                     <img src="century.jpg" alt="Service Provider" class="provider-img">
-                    <div class="provider-name">Arun Joshi</div>
-                    <div class="provider-role">Operations Manager</div>
+                 
                 </div>
                 <div class="provider-card">
                     <img src="brigade.jpg" alt="Service Provider" class="provider-img">
-                    <div class="provider-name">M R Jaishankar</div>
-                    <div class="provider-role">Executive Chairman</div>
+                  
                 </div>
                  <div class="provider-card">
                     <img src="vajram.jpg" alt="Service Provider" class="provider-img">
-                    <div class="provider-name">Smitha Bollamma</div>
-                    <div class="provider-role">Director</div>
+                  
                 </div>
                  <div class="provider-card">
                     <img src="embassy.jpg" alt="Service Provider" class="provider-img">
-                    <div class="provider-name">Aditya Virwani</div>
-                    <div class="provider-role">Managing Director</div>
+                    
                 </div>
                   <div class="provider-card">
                     <img src="sjr.jpg" alt="Service Provider" class="provider-img">
-                    <div class="provider-name">Jayarama Vijay Reddy</div>
-                    <div class="provider-role">Managing Director</div>
+                    
                 </div>
                    <div class="provider-card">
                     <img src="goorej.jpg" alt="Service Provider" class="provider-img">
-                    <div class="provider-name">Gaurav Pandey</div>
-                    <div class="provider-role">CEO</div>
+                  
                 </div>
             </div>
         </div>
@@ -2060,9 +2007,9 @@
                     <h3>Eco Car Wash</h3>
                     <p>Professional car cleaning services using eco-friendly products and advanced techniques to keep your vehicle in pristine condition.</p>
                     <div class="social-links">
-                        <a href="https://wa.me/919663717777?text=Hello%20 %2C%20I%E2%80%99m%20interested%20in%20booking%20an%20Eco%20Car%20Wash%20service.%0APlease%20share%20the%20details%20and%20available%20slots." target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://www.facebook.com/share/17cAm5TEtZ/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/invites/contact/?igsh=mpcrm8bwrmst&utm_content=zyvzdne" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/919663717777?text=Hello%20 %2C%20I%E2%80%99m%20interested%20in%20booking%20an%20Eco%20Car%20Wash%20service.%0APlease%20share%20the%20details%20and%20available%20slots." target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/share/17cAm5TEtZ/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/invites/contact/?igsh=mpcrm8bwrmst&utm_content=zyvzdne" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
@@ -2127,91 +2074,206 @@
     </div>
 
     <!-- Floating Call Button -->
-    <a href="tel:9663717777" class="call-float">
+    <a href="tel:9663717777" class="call-float" aria-label="Call Us">
         <i class="fas fa-phone"></i>
     </a>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/919663717777?text=Hello%20 %2C%20I%E2%80%99m%20interested%20in%20booking%20an%20Eco%20Car%20Wash%20service.%0APlease%20share%20the%20details%20and%20available%20slots." target="_blank" class="whatsapp-float">
+    <a href="https://wa.me/919663717777?text=Hello%20 %2C%20I%E2%80%99m%20interested%20in%20booking%20an%20Eco%20Car%20Wash%20service.%0APlease%20share%20the%20details%20and%20available%20slots." target="_blank" class="whatsapp-float" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <script>
-        // Mobile menu toggle
-        document.getElementById('mobileMenu').addEventListener('click', function() {
-            document.getElementById('navMenu').classList.toggle('active');
+        // Modern JavaScript with improved functionality
+
+        // DOM Content Loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize all components
+            initMobileMenu();
+            initScrollAnimations();
+            initFormValidation();
+            initBackToTop();
+            initHeaderScroll();
+            initServiceCardAnimations();
         });
 
-        // Mobile dots navigation toggle
-        document.getElementById('dotsContainer').addEventListener('click', function(e) {
-            e.stopPropagation();
-            document.getElementById('mobileNavMenu').classList.toggle('active');
-        });
-
-        // Close mobile nav menu when clicking outside
-        document.addEventListener('click', function(e) {
-            const mobileNavMenu = document.getElementById('mobileNavMenu');
-            const dotsContainer = document.getElementById('dotsContainer');
+        // Mobile Menu Toggle
+        function initMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const navMenu = document.getElementById('navMenu');
             
-            if (!mobileNavMenu.contains(e.target) && !dotsContainer.contains(e.target)) {
-                mobileNavMenu.classList.remove('active');
-            }
-        });
+            mobileMenu.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                mobileMenu.querySelector('i').classList.toggle('fa-bars');
+                mobileMenu.querySelector('i').classList.toggle('fa-times');
+            });
 
-        // Navigation for mobile dots menu
-        document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('data-target');
-                const targetElement = document.getElementById(targetId);
-                
-                if (targetElement) {
-                    // Close the menu
-                    document.getElementById('mobileNavMenu').classList.remove('active');
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                    mobileMenu.querySelector('i').classList.add('fa-bars');
+                    mobileMenu.querySelector('i').classList.remove('fa-times');
+                });
+            });
+        }
+
+        // Scroll Animations
+        function initScrollAnimations() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe service cards
+            document.querySelectorAll('.service-card').forEach(card => {
+                observer.observe(card);
+            });
+
+            // Observe other elements that should animate on scroll
+            document.querySelectorAll('.commitment-card, .service-category, .feature').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Form Validation
+        function initFormValidation() {
+            const contactForm = document.getElementById('contactForm');
+            const feedbackForm = document.getElementById('feedbackForm');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
                     
-                    // Scroll to the target section
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
+                    // Basic validation
+                    const name = document.getElementById('name').value;
+                    const phone = document.getElementById('phone').value;
+                    const message = document.getElementById('message').value;
+                    
+                    if (!name || !phone || !message) {
+                        alert('Please fill in all required fields.');
+                        return;
+                    }
+                    
+                    // Phone validation
+                    const phoneRegex = /^[0-9]{10}$/;
+                    if (!phoneRegex.test(phone)) {
+                        alert('Please enter a valid 10-digit phone number.');
+                        return;
+                    }
+                    
+                    // If email is provided, validate it
+                    const email = document.getElementById('email').value;
+                    if (email && !validateEmail(email)) {
+                        alert('Please enter a valid email address.');
+                        return;
+                    }
+                    
+                    // Form is valid - show success message
+                    alert('Thank you for your message! We will contact you soon.');
+                    this.reset();
+                });
+            }
+
+            if (feedbackForm) {
+                feedbackForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form values
+                    const name = document.getElementById('feedbackName').value;
+                    const phone = document.getElementById('feedbackPhone').value;
+                    const rating = document.querySelector('input[name="rating"]:checked') ? document.querySelector('input[name="rating"]:checked').value : 'Not rated';
+                    const message = document.getElementById('feedbackMessage').value;
+                    
+                    // Validation
+                    if (!name || !phone || !message) {
+                        alert('Please fill in all required fields.');
+                        return;
+                    }
+                    
+                    // Phone validation
+                    const phoneRegex = /^[0-9]{10}$/;
+                    if (!phoneRegex.test(phone)) {
+                        alert('Please enter a valid 10-digit phone number.');
+                        return;
+                    }
+                    
+                    // Create WhatsApp message
+                    const whatsappMessage = `*New Feedback from Eco Car Wash Website*%0A%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Rating:* ${rating} stars%0A*Feedback:* ${message}`;
+                    
+                    // Open WhatsApp with pre-filled message
+                    window.open(`https://wa.me/919663717777?text=${whatsappMessage}`, '_blank');
+                    
+                    // Show confirmation message
+                    alert('Thank you for your feedback! You will be redirected to WhatsApp to send your feedback.');
+                    
+                    // Reset form
+                    this.reset();
+                    
+                    // Reset rating
+                    document.querySelectorAll('input[name="rating"]').forEach(radio => {
+                        radio.checked = false;
                     });
+                });
+            }
+        }
+
+        // Email validation helper
+        function validateEmail(email) {
+            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        // Back to Top Button
+        function initBackToTop() {
+            const backToTop = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTop.classList.add('active');
+                } else {
+                    backToTop.classList.remove('active');
                 }
             });
-        });
-
-        // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! We will contact you soon.');
-            this.reset();
-        });
-
-        // Feedback form submission
-        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
-            e.preventDefault();
             
-            // Get form values
-            const name = document.getElementById('feedbackName').value;
-            const phone = document.getElementById('feedbackPhone').value;
-            const rating = document.querySelector('input[name="rating"]:checked') ? document.querySelector('input[name="rating"]:checked').value : 'Not rated';
-            const message = document.getElementById('feedbackMessage').value;
-            
-            // Create WhatsApp message
-            const whatsappMessage = `*New Feedback from Eco Car Wash Website*%0A%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Rating:* ${rating} stars%0A*Feedback:* ${message}`;
-            
-            // Open WhatsApp with pre-filled message
-            window.open(`https://wa.me/919663717777?text=${whatsappMessage}`, '_blank');
-            
-            // Show confirmation message
-            alert('Thank you for your feedback! You will be redirected to WhatsApp to send your feedback.');
-            
-            // Reset form
-            this.reset();
-            
-            // Reset rating
-            document.querySelectorAll('input[name="rating"]').forEach(radio => {
-                radio.checked = false;
+            backToTop.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
-        });
+        }
+
+        // Header Scroll Effect
+        function initHeaderScroll() {
+            const header = document.getElementById('header');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        }
+
+        // Service Card Animations
+        function initServiceCardAnimations() {
+            const serviceCards = document.querySelectorAll('.service-card');
+            
+            serviceCards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.2}s`;
+            });
+        }
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -2227,37 +2289,9 @@
                         top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
-                    
-                    // Close mobile menu if open
-                    if(window.innerWidth <= 768) {
-                        document.getElementById('navMenu').classList.remove('active');
-                        document.getElementById('mobileNavMenu').classList.remove('active');
-                    }
                 }
             });
         });
-
-        // Header background on scroll
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if(window.scrollY > 100) {
-                header.style.background = 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)';
-                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
-            } else {
-                header.style.background = 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)';
-                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-            }
-        });
-
-        // Function to make call
-        function makeCall() {
-            window.location.href = 'tel:9663717777';
-        }
-
-        // Function to send email
-        function sendEmail() {
-            window.location.href = 'mailto:ecocarwash365@gmail.com';
-        }
 
         // Location Modal Functions
         function showLocation() {
@@ -2273,37 +2307,6 @@
             if (e.target === this) {
                 closeLocation();
             }
-        });
-
-        // Service cards animation on scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const serviceCards = document.querySelectorAll('.service-card');
-            
-            // Function to check if element is in viewport
-            function isInViewport(element) {
-                const rect = element.getBoundingClientRect();
-                return (
-                    rect.top >= 0 &&
-                    rect.left >= 0 &&
-                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-                );
-            }
-            
-            // Function to handle scroll animation
-            function handleScrollAnimation() {
-                serviceCards.forEach(card => {
-                    if (isInViewport(card)) {
-                        card.classList.add('animate');
-                    }
-                });
-            }
-            
-            // Initial check
-            handleScrollAnimation();
-            
-            // Check on scroll
-            window.addEventListener('scroll', handleScrollAnimation);
         });
     </script>
 </body>
