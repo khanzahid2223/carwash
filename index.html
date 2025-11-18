@@ -563,6 +563,7 @@
             max-width: 800px;
             margin: 0 auto;
             border: 1px solid var(--glass-border);
+            overflow-x: auto; /* Added for mobile scrolling */
         }
 
         .pricing-header {
@@ -579,6 +580,7 @@
 
         .pricing-body {
             padding: 0;
+            width: 100%; /* Ensure full width */
         }
 
         .pricing-row {
@@ -586,6 +588,7 @@
             grid-template-columns: 1fr 1fr 1fr;
             padding: 20px 30px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            min-width: 500px; /* Ensure minimum width for mobile */
         }
 
         .pricing-row.header {
@@ -1333,14 +1336,13 @@
                 padding: 30px 20px;
             }
             
-            .pricing-row {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 10px;
+            /* Pricing table mobile fix - horizontal scroll */
+            .pricing-table {
+                overflow-x: auto;
             }
             
-            .pricing-row.header {
-                display: none;
+            .pricing-row {
+                min-width: 500px; /* Ensure minimum width for mobile */
             }
             
             .location-actions {
@@ -2311,5 +2313,3 @@
     </script>
 </body>
 </html>
-
-
