@@ -551,7 +551,6 @@
         /* Pricing Section */
         .pricing {
             background-color: var(--black);
-            width:100%;
         }
 
         .pricing-table {
@@ -561,7 +560,7 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: var(--glass-shadow);
-            max-width: 100%;
+            max-width: 800px;
             margin: 0 auto;
             border: 1px solid var(--glass-border);
             overflow-x: auto; /* Added for mobile scrolling */
@@ -572,13 +571,13 @@
             color: var(--white);
             padding: 30px;
             text-align: center;
-             width: 100%; /* Ensure full width */
+            width: 100%; /* Ensure full width */
+            min-width: 500px; /* Match the minimum width of table rows */
         }
 
         .pricing-header h3 {
             font-size: 28px;
             margin-bottom: 10px;
-            width:100%;
         }
 
         .pricing-body {
@@ -591,11 +590,11 @@
             grid-template-columns: 1fr 1fr 1fr;
             padding: 20px 30px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            min-width: 100%; /* Ensure minimum width for mobile */
+            min-width: 500px; /* Ensure minimum width for mobile */
         }
 
         .pricing-row.header {
-            font-weight: 100%;
+            font-weight: 700;
             background-color: var(--light-gray);
         }
 
@@ -606,10 +605,11 @@
         .pricing-footer {
             padding: 30px;
             background-color: var(--light-gray);
-            width:100%
             text-align: center;
             font-style: italic;
             color: var(--text-gray);
+            width: 100%; /* Ensure full width */
+            min-width: 500px; /* Match the minimum width of table rows */
         }
 
         /* About Section */
@@ -1346,6 +1346,11 @@
             }
             
             .pricing-row {
+                min-width: 500px; /* Ensure minimum width for mobile */
+            }
+            
+            .pricing-header,
+            .pricing-footer {
                 min-width: 500px; /* Ensure minimum width for mobile */
             }
             
@@ -2317,11 +2322,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
